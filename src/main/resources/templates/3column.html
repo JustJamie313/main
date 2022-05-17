@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+    </head>
+    <body>
+        <main th:fragment="column3" class="column3">
+            <div class="left">
+                <div th:replace="feedback::feedback"></div>
+            </div>
+            <div class="center">
+                Center column
+            </div>
+            <div class="right">
+                <div th:replace="projects::projects"></div>
+            </div>
+        </main>
+    </body>
+</html>

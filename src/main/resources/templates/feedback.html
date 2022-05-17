@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+    </head>
+    <body>
+        <div th:fragment="feedback" th:each="item:${feedback}" class="feedback">
+            <p th:text="${item.detail}">Feedback Detail</p>
+            <p><h6 th:text="${item.author}">Feedback Author</h6>, <h6 th:text="${item.date}">Feedback Date</h6></p>
+        </div>
+    </body>
+</html>

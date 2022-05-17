@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <title>Domesne</title>
+        <script th:src="@{/js/site.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/site.css}"/>
+        <link rel="icon" th:href="@{/images/rainbowDiamond.png}"/>
+    </head>
+    <body>
+        <nav th:fragment="navigation">
+            <a class="navButton" th:href="@{/}">Domesne</a>
+            <a class="navButton" th:href="@{/guess/}">Guess My Number</a>
+            <a class="navButton" th:href="@{/gallery/}">Gallery</a>
+            <a class="navButton" th:href="@{/maker/}">DomesneMaker</a>
+            <a class="navButton" th:href="@{/flaming}">Flaming Text</a>
+        </nav>
+        <header th:fragment="siteTitle">
+            <h1 id='flamingText'>&#8203;Domesne</h1>
+            <div id='definition'>
+                <details>
+                    <summary>
+                        <span class='row'>
+                            <h3>domesne&nbsp;</h3>
+                            <h5>[doh-meyn]&nbsp;</h5>
+                            <img class='speak clickable' th:src='@{/images/speak.png}' alt='Pronounce Domesne' onclick='speakThis(event,"domain");'/>
+                        </span>
+                    </summary>
+                    <p>
+                        <em>noun</em>
+                    <ol>
+                        <li>the collection of files and resources that embody your website presence.</li>
+                    </ol>
+                    </p>
+                </details>
+            </div>
+        </header>
+    <th:block th:fragment="feedback">
+        <p>Feedback Detail</p>
+        <h5>Feedback Author, Feedback Date</h5>
+    </th:block>
+        <footer th:fragment="siteFooter">
+            <a href="mailto: jamie.miller@domesne.com">Contact</a>
+            <p>&copy;<span id="copyDate"></span> ~ Domesne.com</p>
+            <p>All Rights Reserved.</p>
+        </footer>
+    </body>
+</html>

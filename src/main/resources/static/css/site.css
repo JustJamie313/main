@@ -1,0 +1,206 @@
+/****** Tag ******/
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+details > summary{
+    list-style: none;
+    cursor: pointer;
+}
+
+footer{
+    width: 90vw;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+footer p{
+    margin: 0;
+    font-size: 12px;
+    color: darkgray;
+}
+h1{
+    font-size: 96px;
+    margin: 0;
+}
+h3, h5{
+    margin: 0;
+    font-size: 24px;
+    align-self: center;
+}
+h6{
+    display: inline;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90vw;
+}
+hr{
+    width: 100%;
+    border-color: #ffd700;
+    box-shadow: 1px 1px 3px black;
+}
+iframe{
+    width: 100vw;
+    height: 50vh;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 90vw;
+}
+/****** Class ******/
+.button{
+    display: block;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    background: radial-gradient(yellow,orange);
+    border-radius: 15px;
+    padding: 15px;
+    color: black;
+    margin: 7.5px;
+    font-size: 24px;
+}
+.column3{
+    display: flex;
+    flex-direction: row;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: blue;
+    width: 48vw;
+}
+.clickable:hover{
+    cursor: pointer;
+}
+.feedback{
+    width: 95%;
+    margin: auto;
+    border: 2px ridge gold;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 2.5px;
+}
+.h3Dot{
+    display: flex;
+    font-size: 48px;
+    line-height: 24px;
+}
+.iP::after{
+    content: "*";
+    color: red;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 25px;
+    width: 24vw;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 24vw;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.show{
+    background-color: blue;
+}
+/****** Tag.Class ******/
+h1.flamingText{
+    display: inline;
+    margin: 0;
+    padding-top: 50px;
+    margin-top: -50px;
+    background-image:
+        linear-gradient(rgba(0,0,0,1) 65%,rgba(255,0,0,0.15),rgba(255, 165, 0,0.75) 75%, rgba(255, 255, 0,0.75) 85%, rgba(255,0,0,0.75) 95%),
+        radial-gradient(ellipse at center, rgba(0,0,0,1),rgba(255, 165, 0,1), rgba(255, 255, 0,1), rgba(255, 0, 0,1),rgba(0,0,0,0.75) 60%);
+    text-shadow: 0 8px 13px rgba(255,169,0,0.4), 0 4px 6.5px rgba(255,0,0,0.375), 0 -10px 20px rgba(0,0,0,0.5);
+    background-size: 33px 100%;
+    background-blend-mode: luminosity, darken;
+    background-repeat: repeat-x;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    -ms-background-clip: text;
+    -ms-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation-name: flames;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1500ms;
+    animation-fill-mode: both;
+}
+/****** ID ******/
+/* #definition{
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+} */
+/****** ID Tag ******/
+
+
+
+/****** Animations ******/
+@keyframes flames {
+     11%{
+        background-position: 0.25vw 1vh;
+        background-size: 43px 104%;
+    }
+    22%{
+        background-position: 0 1vh;
+        background-size: 33px 102%;
+    }
+    33%{
+        background-position:-0.25vw 1vh;
+        background-size: 23px 100%;
+    }
+    44%{
+        background-position: 0 1vh;
+        background-size: 33px 102%;
+    }
+    55%{
+        background-position: -0.15vw 1vh;
+        background-size: 28px 101%;
+    }
+    66%{
+        background-position: 0 1vh;
+        background-size: 33px 102%;
+    }
+    77%{
+        background-position: 0.15vw 1vh;
+        background-size: 38px 103%;
+    }
+    88%{
+        background-position: 0 1vh;
+        background-size: 33px 102%;
+    }
+    100%{
+        background-position: 0.25 1vh;
+        background-size: 43px 104%;
+    }
+}

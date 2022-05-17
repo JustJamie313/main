@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en' xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KC CoderGirl Art Gallery - ViewFinder</title>
+    <link rel='stylesheet' type='text/css' th:href="@{/projects/gallery/viewfinder/viewFinder.css}"/>
+    <link rel='stylesheet' type='text/css' media='screen and (orientation: portrait)' th:href="@{/projects/gallery/viewfinder/viewFinderMobile.css}"/>
+    <link rel='icon' type='image/x-icon' href='../images/viewfinder.png'/>
+    <script th:src="@{/projects/gallery/gallery.js}"></script>
+    <script th:src="@{/projects/gallery/viewfinder/viewFinder.js}"></script>
+</head>
+<body>
+<nav th:replace="fragments::navigation"></nav>
+<div class='containerBG fade transparent'></div>
+<div class='container'>
+    <img id='leftEye' class='eye fade full' th:src="@{/projects/gallery/images/}+${gallery[index].src}"/>
+    <img id='leftDisc' class='disc fade transparent' th:src="${index>gallery.size()-4}?@{/projects/gallery/images/}+${gallery[(index-gallery.size())+3].src}:@{/projects/gallery/images/}+${gallery[index+3].src}"/>
+    <img id='centerDisc' class='disc fade transparent' th:src="${index>gallery.size()-3}?@{/projects/gallery/images/}+${gallery[(index-gallery.size())+2].src}:@{/projects/gallery/images/}+${gallery[index+2].src}"/>
+    <img id='rightDisc' class='disc fade transparent' th:src="${index>gallery.size()-2}?@{/projects/gallery/images/}+${gallery[(index-gallery.size())+1].src}:@{/projects/gallery/images/}+${gallery[index+1].src}"/>
+    <img id='rightEye' class='eye fade full' th:src="@{/projects/gallery/images/}+${gallery[index].src}"/>
+</div>
+<div class='buttonBox'>
+    <a class="button" id='view' onclick='look();' th:text="${viewing}?'Stop Viewing':'View'">View</a>
+    <form th:action="@{/gallery/viewfinder/}" method="post">
+        <input type="hidden" value=false th:value="${viewing}" id="viewing" name="aViewing"/>
+        <input type="submit" class="button" id='advance' value="Next"/>
+    </form>
+    <a class="button" id='help' onclick='showControls();'>?</a>
+</div>
+<div class="controls">
+    <span class='close' onclick='showControls();' onmousedown='this.style.boxShadow="none";' onmouseout='this.style.boxShadow="0px 0px 5px black"'>X</span>
+    <h5>On-Screen Controls</h5>
+    <p>
+        Click the <b>View/Stop Viewing</b> Button to View or Stop Viewing the image.<br/>
+        Click the <b>Next</b> Button to advance to the next image.
+    </p>
+</div>
+<footer th:replace="fragments::siteFooter"></footer>
+<p>All images and poetry are my original works.  All Rights Reserved.</p>
+<script th:if="${viewing}">window.addEventListener('load',runFade());</script>
+</body>
+
+</html>

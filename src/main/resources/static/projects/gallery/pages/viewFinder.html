@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>KC CoderGirl Art Gallery - ViewFinder</title>
+        <link rel='stylesheet' type='text/css' href='viewFinder.css'/>
+        <link rel='stylesheet' type='text/css' media='screen and (orientation: portrait)' href='viewFinderMobile.css'/>
+        <link rel='icon' type='image/x-icon' href='../images/viewfinder.png'/>
+        <script src='../gallery.js'></script>
+    </head>
+    <body onkeydown='if(event.key === "ArrowUp"){look(0);}if(event.key === "ArrowRight"){look(1);}'>
+        <div class='containerBG fade transparent'></div>
+        <div class='container' onmousedown='if(window.ontouchend==undefined&&navigator.maxTouchPoints==0){look(event.button)}'>
+            <img id='leftEye' class='eye fade full'/>
+            <img id='leftDisc' class='disc fade transparent'/>
+            <img id='centerDisc' class='disc fade transparent'/>
+            <img id='rightDisc' class='disc fade transparent'/>
+            <img id='rightEye' class='eye fade full'/>
+        </div>
+        <div class='buttonBox'>
+            <button id='view' onclick='look(0);'>View</button>
+            <button id='advance' onclick='look(1);'>Next</button>
+            <button id='help' onclick='showControls();'>?</button>
+        </div>
+        <div class="controls">
+            <span class='close' onclick='showControls();' onmousedown='this.style.boxShadow="none";' onmouseout='this.style.boxShadow="0px 0px 5px black"'>X</span>
+            <h5>Keyboard Controls</h5>
+            <p>
+                Press <b>Up Arrow</b> to View or Stop Viewing the image.<br/>
+                Press <b>Right Arrow</b> to advance to the next image.
+            </p>
+            <h5>Mouse Controls</h5>
+            <p>
+                Click the <b>LEFT</b> mouse button to View or Stop Viewing the image.<br/>
+                Click the <b>MIDDLE</b> mouse button to advance to the next image.
+            </p>
+            <h5>On-Screen Controls</h5>
+            <p>
+                Click the <b>View/Stop Viewing</b> Button to View or Stop Viewing the image.<br/>
+                Click the <b>Next</b> Button to advance to the next image.
+            </p>
+        </div>   
+        <footer>
+            <p>Version: 3.3</p>
+            &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
+            <p>All images and poetry are my original works.  All Rights Reserved.</p>
+         </footer>
+    </body>
+    <script>
+        let index = Number(location.href.substring(location.href.indexOf('=')+1));
+        if(!index){index=Math.floor(Math.random()*gallery.length);}
+        let eyes = document.querySelectorAll('.eye');
+        let discs = document.querySelectorAll('.disc');
+        loadImages(index);
+        function loadImages(index){
+            for(let a=0;a<discs.length;a++){
+                discs[a].src = `../images/${(index+(discs.length-a))>gallery.length-1?gallery[(index+(discs.length-a))-gallery.length].src:gallery[index+(discs.length-a)].src}`;
+                discs[a].alt = `${index+(discs.length-a)>gallery.length-1?gallery[(index+(discs.length-a))-(gallery.length)].alt:gallery[index+(discs.length-a)].alt}`;
+            }
+            for(let a=0;a<eyes.length;a++){
+                eyes[a].src = `../images/${gallery[index].src}`;
+                eyes[a].alt = `${gallery[index].alt}`;
+            }
+        }
+        function look(button){
+            switch(button){
+                case 0:
+                    runFade();
+                    changeButton();
+                break;
+                case 1:
+                    changePicture();
+                break;
+            }
+        }
+        function runFade(){
+            let els = document.querySelectorAll('.fade');
+            for(let a=0;a<els.length;a++){
+                els[a].style.animationPlayState = 'running';
+                els[a].addEventListener('animationiteration',()=>{
+                    els[a].style.animationPlayState = 'paused';
+                });
+            }
+        }
+        function changePicture(){
+            if(index === gallery.length -1){
+                index = 0;
+            } else {
+                index++;
+            }
+            loadImages(index);
+        }
+        function changeButton(){
+            let button = document.querySelector('#view');
+            if(button.innerHTML==="View"){
+                button.innerHTML = "Stop Viewing";
+            } else {
+                button.innerHTML = "View";
+            }
+        }
+        function showControls(){
+            let controls = document.querySelector('.controls');
+            if(controls.style.display === 'none' || !controls.style.display){
+                controls.style.display = 'flex';
+            } else {
+                controls.style.display = 'none';
+            }
+        }
+    </script>
+</html>

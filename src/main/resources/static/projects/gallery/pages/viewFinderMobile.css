@@ -1,0 +1,196 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    background-color: lightskyblue;
+    background-image: url('../images/bgRose.png');
+    background-size: 125px;
+    background-repeat: repeat;
+    animation: changeBG 90s infinite alternate both;
+}
+@keyframes changeBG{
+    15%{
+        background-color: rgba(255,0,0,0.25);
+    }
+    30%{
+        background-color: rgba(255,255,0,0.25);
+    }
+    45%{
+        background-color: rgba(0,255,0,0.25);
+    }
+    60%{
+        background-color: rgba(0,255,255,0.25);
+    }
+    75%{
+        background-color: rgba(0,0,255,0.25);
+    }
+    90%{
+        background-color: rgba(255,0,255,0.25);
+    }
+    100%{
+        background-color: rgba(0,0,0,0.25);
+    }
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25%;
+    width: calc(80vw*1.38);
+    height: 80vw;
+    background: black;
+    z-index: 0;
+}
+.containerBG{
+    display: block;
+    background-image: url('../images/viewfinder.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 25%;
+    width: calc(80vw*1.38);
+    height: 80vw;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+}
+#leftEye, #rightEye{
+    display: flex;
+    width: 20vw;
+    height: 20vw;
+    border: 5px solid black;
+    border-radius: 100%;
+    position: absolute;
+    opacity: 0.25;
+}
+#leftEye{
+    margin-left: -33.25vw;
+    margin-top: 5.25vw;
+}
+#rightEye{
+    margin-left: 33.25vw;
+    margin-top: 5.25vw;
+}
+.disc{
+    display: block;
+    width: 10.5vw;
+    height: 10.5vw;
+    position: absolute;
+    opacity: 0.25;
+}
+#leftDisc{
+    transform: rotateZ(45deg);
+    margin-left: -14vw;
+    margin-top: -24.5vw;
+    
+}
+#centerDisc{
+    transform: rotateZ(90deg);
+    margin-left: 1vw;
+    margin-top: -29.75vw;
+}
+#rightDisc{
+    transform: rotateZ(135deg);
+    margin-left: 15vw;
+    margin-top:-25vw;
+}
+p{
+    margin: 0px;
+    text-align: left;
+    padding-left: 20px;
+    word-wrap: normal;
+    font-size: 14px;
+}
+h5{
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+footer{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    width: calc(80vw*1.38);
+}
+footer p{
+    text-align: center;
+    font-size: 12px;
+}
+
+button{
+    background: rgb(150,150,255);
+    width: 150px;
+    border-radius: 25px;
+    border: 2px solid rgb(0,0,63);
+    box-shadow: 2px 2px 5px black;
+    font: 24px bolder;
+    margin: 0 10px;
+    color: rgb(20, 20, 27);
+}
+button:hover{
+        cursor: pointer;
+}
+.buttonBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    width: calc(80vw*1.38);
+}
+.controls{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    background: lightyellow;
+    border: 2px solid black;
+    border-radius: 25px;
+    box-shadow: 10px 10px 20px black;
+    position: absolute;
+    z-index: 2;
+}
+.close{
+    color: red;
+    background-color: lightgray;
+    font-size: 18px;
+    right: 20px;
+    border: 1px solid darkgray;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 3px;
+    padding: 1px;
+    text-align: center;
+    position: absolute;
+}
+.close:hover{
+    cursor: pointer;
+}
+.fade{
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+    animation-play-state: paused;
+}
+.full{
+    animation-name: transformEyes;
+}
+.transparent{
+    animation-name: fadeToTransparent;
+}
+@keyframes transformEyes{
+    to{
+        opacity: 1;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 25%;
+        width: 70vw;
+        height: 70vw;
+    }
+}
+@keyframes fadeToTransparent{
+    to{
+        opacity: 0;
+    }
+}

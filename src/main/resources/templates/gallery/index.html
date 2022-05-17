@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en' xmlns:th="https://www.thymeleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=0.5">
+      <title>KC CoderGirl Original Art</title>
+      <link rel='stylesheet' type='text/css' th:href="@{/projects/gallery/styles.css}"/>
+      <link rel='icon' type='image/x-icon' th:href="@{/projects/gallery/images/gImage.jpg}"/>
+      <script th:src="@{/projects/gallery/gallery.js}"></script>
+   </head>
+   <body>
+      <nav th:replace="fragments::navigation"></nav>
+      <h1 id="mainHeading"><img id='kccg' th:src="@{/projects/gallery/images/kccodergirl3.png}" alt='KC Codergirl logo'>Original Art Gallery</h1>
+      <div class='container'>
+         <a class='button' id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' th:href="@{getPrevious}">&lt;</a>
+         <main>
+            <img id='light' alt='image of gallery light fixture'/>
+            <span id='chain' onclick='flashes=0;toggleLight();' onmousedown='pullChain();' onmouseup='pullChain();'></span>
+            <article>
+               <header>
+                  <img id='galleryImage' th:src="@{/projects/gallery/images/}+${gallery[galleryIndex].src}" th:class="${gallery[galleryIndex].class}" th:alt="${gallery[galleryIndex].alt}"/>
+                  <p class='nameplate'>
+                     <span id='artworkTitle' class='nameplateText' th:title="${gallery[galleryIndex].name}" th:text="${gallery[galleryIndex].name}"></span>
+                     <span id='artworkArtist' class='nameplateText' th:title="${gallery[galleryIndex].artist}"  th:text="${gallery[galleryIndex].artist}"></span>
+                  </p>
+                  <p class='artworkInformation' th:text="${gallery[galleryIndex].details}"></p>
+               </header>
+               <pre class="pre" th:if="${gallery[galleryIndex].pre.length() > 0}" th:text="${gallery[galleryIndex].pre}"></pre>
+            </article>
+         </main>
+         <a class='button' id='increase' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' th:href="@{getNext}">&gt;</a>
+      </div>
+      <a th:href="@{viewfinder/}"><img id='viewFinder' th:src="@{/projects/gallery/images/viewfinder.png}" alt='image of viewfinder toy'/></a>
+      <footer th:replace="fragments::siteFooter"></footer>
+      <p>All images and poetry are my original works.  All Rights Reserved.</p>
+   </body>
+</html>
